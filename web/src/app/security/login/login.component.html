@@ -1,0 +1,52 @@
+<app-header></app-header>
+<div class="container-fluid bgr">
+  <div class="main">
+    <div class="d-flex justify-content-center pt-5 pb-4">
+      <img src="../../../assets/logo4 copy.png" style="height: 100px;width: 250px">
+    </div>
+    <p class="h4 text-center" style="color: darkblue; font-size: 35px;">ĐĂNG NHẬP VÀO WEBSITE</p>
+    <div class="d-flex justify-content-center mb-4" *ngIf="isOpenToast">
+      <div class="toast align-items-center text-white bg-danger border-0 show fade" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            Sai tên đăng nhập hoặc mật khẩu.
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close" (click)="hideToast()"></button>
+        </div> 
+      </div>
+    </div>
+    <div class="row pb-5">
+      <div class="col"></div>
+      <div class="col-4">
+        <form [formGroup]="formLogin" (ngSubmit)="doSubmit()">
+          <div class="mb-4">
+            <label for="username">Tên đăng nhập<span class="text-danger">(*)</span></label>
+            <input type="text" class="input-custom-1 form-control "
+                   formControlName="userName" id="username"
+                   [ngClass]="(login.userName?.touched || isSubmit ) ? (login.userName?.invalid ? 'is-invalid' : '') : ''">
+            <div class="invalid-feedback px-4" *ngIf="login.userName?.errors?.required">Tên đăng nhập không được để trống.</div>
+          </div>
+          <div>
+            <label for="password">Mật khẩu<span class="text-danger">(*)</span></label>
+            <input type="password" class="input-custom-1 form-control "
+                   formControlName="password" autocomplete="on" id="password"
+                   [ngClass]="(login.password?.touched || isSubmit) ? (login.password?.invalid ? 'is-invalid' : '') : ''">
+            <div class="invalid-feedback px-4" *ngIf="login.password?.errors?.required">Mật khẩu không được để trống.</div>
+          </div>
+          <div class="custom-control custom-checkbox mr-sm-2 pl-5 mt-2 mx-4">
+            <input type="checkbox" class="custom-control-input" id="customControlAutosizing" formControlName="rememberMe">
+            <label class="custom-control-label" for="customControlAutosizing">Ghi nhớ đăng nhập</label>
+            <span>
+              <a class="text-decoration-none ml-lg-5" routerLink="/register" >Tạo mới tài khoản</a>
+            </span>
+          </div>
+          <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-login btn-secondary ">Đăng nhập</button>
+          </div>
+        </form>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,85 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col-lg-12">
+      <h3 class="text-center">DANH SÁCH SẢN PHẨM</h3>
+    </div> 
+  </div>
+  <form class="row mt-3" [formGroup]="search" (ngSubmit)="searchP()">
+    <label class="col-lg-1 col-xl-1 col-form-label" for="sc" style="margin-left: 25%">Nhập Từ : </label>
+    <div class="col-lg-3 col-xl-3">
+      <input type="text" class="form-control border-primary" formControlName="nameSearch" id="sc" maxlength="25"
+             placeholder="Nhập tên hoặc hãng"/>
+    </div>
+    <div class="col-lg-2 col-xl-2">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i>Tìm Kiếm</button>
+    </div>
+  </form>
+  <div class="row mt-3">
+    <div class="col-lg-12">
+      <a class="btn btn-primary" routerLink="/createProduct">TẠO MỚI SẢN PHẨM</a>
+      <table class="table table-striped table-hover table-bordered mt-3">
+        <thead>
+        <tr>
+          <th class="text-center">Mã Sản Phẩm</th>
+          <th class="text-center">Tên Sản Phẩm</th>
+          <th class="text-center">Hình Ảnh</th>
+          <th class="text-center">Hãng</th>
+          <th class="text-center">Giá</th>
+          <th class="text-center">Khuyến Mãi</th>
+          <th class="text-center">Hành Động</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let p of productList,index as i" class="tb">
+        <tr >
+          <td>{{p.idProduct}}</td>
+          <td>{{p.productName}}</td>
+          <td><img [src]="'assets/img/' +p.avt" alt="" width="150px" height="100px"></td>
+          <td>{{p.productType.nameType}}</td>
+          <td class="text-danger">{{numToString(p.price)}}<sup>đ</sup></td>
+          <td>{{p.promotion.namePromotion}}</td>
+          <td class="text-center">
+            <button class="btn btn-outline-info border-0" (click)="view(p.idProduct)"><i class="fa fa-info-circle"></i></button>
+            <a class="btn btn-outline-warning ml-2 border-0" [routerLink]="['/editProduct',p.idProduct]"><i class="fa fa-wrench"></i></a>
+            <button class="btn btn-outline-danger ml-2 border-0" (click)="delete(p.idProduct,p.productName)"><i class="fa fa-trash"></i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination  justify-content-end">
+      <li class="page-item">
+        <a class="page-link" aria-label="Previous"  (click)="getPage(0)">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Đầu</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link"  aria-label="Previous" *ngIf="(indexPagination-1)>0" (click)="getPage((indexPagination-2))">
+          <span aria-hidden="true">&lsaquo;</span>
+          <span class="sr-only">Trước</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" *ngIf="(indexPagination-1)>0" (click)="getPage((indexPagination-2))">{{indexPagination - 1}}</a></li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link"(click)="getPage((indexPagination-1))">{{indexPagination}}</a>
+      </li>
+      <li class="page-item"><a class="page-link" *ngIf="(indexPagination +1)<= totalPagination" (click)="getPage((indexPagination))">{{indexPagination + 1}}</a></li>
+      <li class="page-item">
+        <a class="page-link"  aria-label="Next" *ngIf="(indexPagination +1)<= totalPagination" (click)="getPage((indexPagination))">
+          <span aria-hidden="true">&rsaquo;</span>
+          <span class="sr-only">Sau</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" aria-label="Next"  (click)="getPage((totalPagination-1))">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Cuối</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<app-footer></app-footer>

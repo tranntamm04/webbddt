@@ -1,0 +1,67 @@
+<nav
+  *ngIf="!isAuthPage"
+  class="navbar navbar-expand-lg navbar-light"
+  style="background-color:#6b9cd4;"
+>
+  <!-- Menu USER (không phải admin) -->
+  <div
+    class="collapse navbar-collapse"
+    id="navbarTogglerUser"
+    style="margin-left:30%"
+    *ngIf="name !== 'ROLE_ADMIN'"
+  >
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item ml-lg-3">
+        <a class="nav-link" routerLink="/">
+          <i class="fa fa-home"></i>Trang Chủ
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Menu ADMIN -->
+  <div
+    class="collapse navbar-collapse"
+    id="navbarTogglerAdmin"
+    style="margin-left:25%"
+    *ngIf="name === 'ROLE_ADMIN'"
+  >
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item ml-lg-3">
+        <a class="nav-link" routerLink="/" (click)="on()">
+          <i class="fa fa-home"></i>Trang Chủ
+        </a>
+      </li>
+      <li class="nav-item ml-lg-3">
+        <a class="nav-link" routerLink="/listProduct">
+          <i class="fa fa-th-large"></i> Sản Phẩm
+        </a>
+      </li>
+      <li class="nav-item ml-lg-3">
+        <a class="nav-link" routerLink="/listBill">
+          <i class="fa fa-file-text-o"></i> Đơn Hàng
+        </a>
+      </li>
+      <li class="nav-item ml-lg-3">
+        <a class="nav-link" routerLink="/listCustomer">
+          <i class="fa fa-male"></i> Khách Hàng
+        </a>
+      </li>
+      <li class="nav-item ml-lg-3">
+        <a class="nav-link" routerLink="/listEmployee">
+          <i class="fa fa-users"></i> Nhân Viên
+        </a>
+      </li>
+      <li class="nav-item ml-lg-3">
+        <a class="nav-link" routerLink="/chart">
+          <i class="fa fa-bar-chart-o"></i> Thống Kê
+        </a>
+      </li>
+      <li class="nav-item" style="margin-left:230px">
+        <a class="nav-link" (click)="logout()">
+          <i class="fa fa-sign-out text-danger"></i> Đăng Xuất
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

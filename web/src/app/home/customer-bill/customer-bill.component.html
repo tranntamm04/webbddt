@@ -1,0 +1,103 @@
+<app-header></app-header>
+<div class="container">
+  <div class="header row mt-3">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="../../../assets/logo4 copy.png" style="height: 60px;width: 250px">
+      </a> 
+    </div>
+    <div class="content">
+      <div class="search-header">
+        <form class="input-search" [formGroup]="searchItem" (ngSubmit)="search()">
+          <div class="autocomplete">
+            <input id="search-box" name="search" autocomplete="off" type="text"
+                   placeholder="Nhập từ khóa tìm kiếm..." class="form-control" formControlName="itemSearch">
+            <button type="submit">
+              <i class="fa fa-search"></i>
+              Tìm kiếm
+            </button>
+          </div>
+        </form> <!-- End Form search -->
+        <div class="tags">
+          <strong>Từ khóa: </strong>
+          <button class="border-0" *ngFor="let t of tag" (click)="searchTag(t)">{{t + " "}} &nbsp;</button>
+        </div>
+      </div> <!-- End Search header -->
+
+      <div class="tools-member">
+        <div class="member" *ngIf="userName === ''">
+          <a id="btnTaiKhoan" routerLink="/login" class="text-decoration-none">
+            <i class="fa fa-user"></i>
+            Tài khoản
+          </a>
+        </div>
+        <div class="member dropdown" *ngIf="userName !== ''">
+          <a class="dropbtn text-decoration-none">
+            <i class="fa fa-user"></i>
+            {{userName}}
+          </a>
+          <div class="dropdown-content">
+            <a *ngIf="userName!=='admin'" routerLink="/customerBill">Trang Cá Nhân</a>
+            <a *ngIf="userName!=='admin'" routerLink="/changePass">Đổi Mật Khẩu</a>
+            <a (click)="logout()">Đăng Xuất</a>
+          </div>
+        </div> <!-- End Member -->
+
+        <div class="cart">
+          <a routerLink="/cart" class="text-decoration-none">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Giỏ hàng</span>
+            <span class="cart-number">{{totalItem}}</span>
+          </a>
+        </div> <!-- End Cart -->
+      </div><!-- End Tools Member -->
+    </div> <!-- End Content -->
+  </div>
+  <div class="row mt-3 mb-5" *ngIf="billList.length !== 0">
+      <div class="col-lg-12 mb-3">
+        <h3 class="text-center">ĐƠN HÀNG CỦA TÔI</h3>
+      </div>
+      <table class="table table-striped">
+        <thead>
+        <tr style="text-align:center;vertical-align:middle;font-size:20px;background-color:coral;color:black!important">
+          <th style="font-weight:600">STT</th>
+          <th style="font-weight:600">Ngày lập</th>
+          <th style="font-weight:600">Người nhận</th>
+          <th style="font-weight:600">SDT</th>
+          <th style="font-weight:600">Địa chỉ</th>
+          <th style="font-weight:600">Phương thức TT</th>
+          <th style="font-weight:600">Tổng tiền</th>
+          <th style="font-weight:600">Trạng thái</th>
+          <th style="font-weight:600">Xem chi tiết</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="billList.length>0">
+        <tr *ngFor="let b of billList, let i = index">
+          <td style="text-align:center;vertical-align:middle;">{{i + 1}}</td>
+          <td style="text-align:center;vertical-align:middle;">{{b.dateFounded}}</td>
+          <td style="text-align:center;vertical-align:middle;">{{b.received}}</td>
+          <td style="text-align:center;vertical-align:middle;">{{b.phone}}</td>
+          <td style="text-align:center;vertical-align:middle;">{{b.address}}</td>
+          <td style="text-align:center;vertical-align:middle;">{{b.paymentMethods}}</td>
+          <td style="text-align:center;vertical-align:middle;">{{numToString(b.totalMoney)}}<sup>đ</sup></td>
+          <td style="text-align:center;vertical-align:middle;color: #ffed26" *ngIf="b.status===1">Đang xử lý</td>
+          <td style="text-align:center;vertical-align:middle;color: #3fb846" *ngIf="b.status===2">Thành công</td>
+          <td style="text-align:center;vertical-align:middle;">
+            <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" (click)="xem(b.idBill)">
+              Xem
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="row mt-3 mb-5" *ngIf="billList.length ===0">
+    <div class="col-lg-12 mb-3">
+      <h3 class="text-center">Giỏ Hàng Trống - Mua Hàng Đi Bạn Ơi ^^!</h3>
+    </div>
+    <div class="col-lg-12 ">
+      <img src="../../../assets/tien-bip-noi-lai-tinh-cam.jpg" style="width: 99.9%;height: 450px">
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

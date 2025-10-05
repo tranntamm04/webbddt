@@ -1,0 +1,200 @@
+<app-header></app-header>
+<div class="container">
+  <div class="header row mt-3">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="../../../assets/logo4 copy.png" style="height:60px;width:250px">
+      </a>
+    </div>
+
+    <div class="content">
+      <div class="search-header">
+        <form class="input-search" [formGroup]="searchItem" (ngSubmit)="search()">
+          <div class="autocomplete">
+            <input id="search-box" name="search" autocomplete="off" type="text"
+                   placeholder="Nhập từ khóa tìm kiếm..." class="form-control"
+                   formControlName="itemSearch">
+            <button type="submit">
+              <i class="fa fa-search"></i> Tìm kiếm
+            </button>
+          </div>
+        </form>
+        <div class="tags">
+          <strong>Từ khóa: </strong>
+          <button class="border-0" *ngFor="let t of tag" (click)="searchTag(t)">{{ t }}&nbsp;</button>
+        </div>
+      </div>
+
+      <div class="tools-member">
+        <div class="member" *ngIf="name === ''">
+          <a id="btnTaiKhoan" routerLink="/login" class="text-decoration-none">
+            <i class="fa fa-user"></i> Tài khoản
+          </a>
+        </div>
+
+        <div class="member dropdown" *ngIf="name !== ''">
+          <a class="dropbtn text-decoration-none">
+            <i class="fa fa-user"></i> {{ name }}
+          </a>
+          <div class="dropdown-content">
+            <a *ngIf="name!=='admin'" routerLink="/customerBill">Trang Cá Nhân</a>
+            <a *ngIf="name!=='admin'" routerLink="/changePass">Đổi Mật Khẩu</a>
+            <a (click)="logout()">Đăng Xuất</a>
+          </div>
+        </div>
+
+        <div class="cart">
+          <a routerLink="/cart" class="text-decoration-none">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Giỏ hàng</span>
+            <span class="cart-number">{{ totalItem }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-5 mt-3">
+    <div class="chitietSanpham col-lg-12">
+      <h3>{{ product.productName }}</h3>
+      <div class="rowdetail group">
+        <div class="picture">
+          <img [src]="'assets/img/' + product.avt" style="height:430px;width:366px" class="img-thumbnail">
+        </div>
+
+        <div class="price_sale">
+          <div class="area_price">
+            <strong>{{ numToString(product.price) }}đ</strong>
+            <label class="giareonline" *ngIf="product.idPromotion===1">Giá rẻ online</label>
+            <label class="moiramat" *ngIf="product.idPromotion==2">Mới ra mắt</label>
+            <label class="tragop" *ngIf="product.idPromotion==3">Trả góp 0%</label>
+          </div>
+
+          <div class="ship" style="display:none;">
+            <i class="fa fa-clock-o"></i>
+            <div>NHẬN HÀNG TRONG 1 GIỜ</div>
+          </div>
+
+          <div class="area_promo">
+            <strong>khuyến mãi</strong>
+            <div class="promo">
+              <i class="fa fa-check-circle"></i>
+              <div id="detailPromo">
+                Cơ hội trúng <span style="font-weight:bold">37 xe Wave Alpha</span> khi trả góp FE Credit
+              </div>
+            </div>
+          </div>
+
+          <div class="policy">
+            <div>
+              <i class="fa fa-archive"></i>
+              <p>Trong hộp có: Sạc, Tai nghe, Sách hướng dẫn</p>
+              <p>Tặng Balo Laptop</p>
+              <p>Tặng phần mềm học tập online trị giá 300.000đ</p>
+            </div>
+            <div>
+              <i class="fa fa-star"></i>
+              <p>Bảo hành chính hãng 12 tháng.</p>
+            </div>
+            <div class="last">
+              <i class="fa fa-retweet"></i>
+              <p>1 đổi 1 trong 1 tháng nếu lỗi, đổi sản phẩm tại nhà trong 1 ngày.</p>
+            </div>
+          </div>
+
+          <div class="area_order">
+            <a class="buy_now" (click)="add(product.idProduct, product.productName, product.price, product.avt)">
+              <h3><i class="fa fa-plus"></i> Thêm vào giỏ hàng</h3>
+            </a>
+          </div>
+        </div>
+
+        <div class="info_product">
+          <h2>Thông số kỹ thuật</h2>
+          <ul class="info">
+            <li><p>Màn hình</p><div>{{ product.screen }}</div></li>
+            <li><p>Hệ điều hành</p><div>{{ product.hdh }}</div></li>
+            <li><p>Camera</p><div>{{ product.cameraT }}</div></li>
+            <li><p>CPU</p><div>{{ product.cpu }}</div></li>
+            <li><p>RAM</p><div>{{ product.ram }}</div></li>
+            <li><p>SSD</p><div>{{ product.rom }}</div></li>
+            <li><p>SD Card</p><div>{{ product.sdCard }}</div></li>
+            <li><p>Dung lượng pin</p><div>{{ product.pin }}</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Nhận xét -->
+  <div class="comment-area">
+    <div class="guiBinhLuan">
+      <form [formGroup]="createE">
+        <div class="stars">
+          <input class="star star-5" id="star-5" value="5" type="radio" name="numOfStar" formControlName="numOfStar"/>
+          <label class="star star-5" for="star-5" title="Tuyệt vời"></label>
+
+          <input class="star star-4" id="star-4" value="4" type="radio" name="numOfStar" formControlName="numOfStar"/>
+          <label class="star star-4" for="star-4" title="Tốt"></label>
+
+          <input class="star star-3" id="star-3" value="3" type="radio" name="numOfStar" formControlName="numOfStar"/>
+          <label class="star star-3" for="star-3" title="Tạm"></label>
+
+          <input class="star star-2" id="star-2" value="2" type="radio" name="numOfStar" formControlName="numOfStar"/>
+          <label class="star star-2" for="star-2" title="Khá"></label>
+
+          <input class="star star-1" id="star-1" value="1" type="radio" name="numOfStar" formControlName="numOfStar"/>
+          <label class="star star-1" for="star-1" title="Tệ"></label>
+        </div>
+
+        <textarea maxlength="250" id="inpBinhLuan" placeholder="Viết suy nghĩ của bạn vào đây..."
+                  formControlName="comment"></textarea>
+        <input id="btnBinhLuan" type="button" value="GỬI BÌNH LUẬN" (click)="createEvaluate()">
+      </form>
+    </div>
+
+    <div class="container-comment">
+      <div class="rating">
+        <ngb-rating [max]="5" [(rate)]="product.numOfStar" [readonly]="false"></ngb-rating>
+        <span> {{ product.numOfReview }} đánh giá</span>
+      </div>
+
+      <div class="comment-content" *ngFor="let i of listBl">
+        <div class="comment">
+          <i class="fa fa-user-circle"></i>
+          <h4>
+            {{ i.customer.surname + ' ' + i.customer.name }}
+            <ngb-rating [max]="5" [(rate)]="i.numberOfStar" [readonly]="false"></ngb-rating>
+          </h4>
+          <p>{{ i.comment }}</p>
+          <span class="time">{{ i.dateFounded }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GỢI Ý SẢN PHẨM CÙNG LOẠI -->
+  <div class="related-section">
+    <h3>Sản phẩm cùng loại ({{ product.nameType || '—' }})</h3>
+    <div class="related-grid">
+      <div class="related-item" *ngFor="let p of relatedProducts">
+        <a [routerLink]="['/viewProduct', p.idProduct]" class="thumb">
+          <img [src]="'assets/img/' + p.avt" alt="{{ p.productName }}">
+        </a>
+        <a [routerLink]="['/viewProduct', p.idProduct]" class="name">{{ p.productName }}</a>
+        <div class="price">{{ numToString(p.price) }}đ</div>
+        <button type="button"
+                (click)="add(p.idProduct, p.productName, p.price, p.avt)">
+          Thêm vào giỏ
+        </button>
+      </div>
+      <div class="empty" *ngIf="relatedProducts.length === 0">
+        Chưa có sản phẩm tương tự để gợi ý.
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

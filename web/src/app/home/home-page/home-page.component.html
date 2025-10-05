@@ -1,0 +1,123 @@
+<app-header></app-header>
+<div class="container"> 
+  <div class="header row mt-3" >
+      <div class="logo">
+        <a routerLink="/" (click)="on()">
+          <img src="../../../assets/logo4 copy.png" style="height: 100px;width: 250px">
+        </a>
+      </div>
+    <div class="content">
+      <div class="search-header">
+        <form class="input-search" method="get" [formGroup]="searchItem" (ngSubmit)="openSearch()">
+          <div class="autocomplete">
+            <input id="search-box" name="search" autocomplete="off" type="text" placeholder="Nhập từ khóa tìm kiếm..."
+                   class="form-control" formControlName="itemSearch">
+            <button type="submit">
+              <i class="fa fa-search"></i>
+              Tìm kiếm
+            </button>
+          </div>
+        </form> <!-- End Form search -->
+        <div class="tags">
+          <strong>Từ khóa: </strong><button class="border-0" *ngFor="let t of tag" (click)="searchTag(t)">{{t + " "}} &nbsp;</button>
+        </div>
+      </div> <!-- End Search header -->
+
+      <div class="tools-member">
+        <div class="member" *ngIf="name === ''">
+          <a  id="btnTaiKhoan" routerLink="/login" class="text-decoration-none">
+            <i class="fa fa-user"></i>
+            Tài khoản
+          </a>
+        </div>
+        <div class="member dropdown" *ngIf="name !== ''">
+          <a class="dropbtn text-decoration-none">
+            <i class="fa fa-user"></i>
+           {{name}}
+          </a>
+          <div class="dropdown-content">
+            <a *ngIf="name!=='admin'" routerLink="/customerBill">Trang Cá Nhân</a>
+            <a *ngIf="name!=='admin'" routerLink="/changePass">Đổi Mật Khẩu</a>
+            <a (click)="logout()">Đăng Xuất</a>
+          </div>
+        </div> <!-- End Member -->
+
+        <div class="cart">
+          <a routerLink="/cart" class="text-decoration-none">
+            <i class="fa fa-shopping-cart"></i>
+            <span>Giỏ hàng</span>
+            <span class="cart-number">{{totalItem}}</span>
+          </a>
+        </div> <!-- End Cart -->
+      </div><!-- End Tools Member -->
+    </div> <!-- End Content -->
+  </div>
+  <div class="row mt-4">
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let image of images">
+          <div class="wrapper">
+            <img [src]="image.src" alt="Random first slide" style="width: 99.9%">
+          </div>
+          <div class="carousel-caption">
+          </div>
+        </ng-template>
+      </ngb-carousel>
+  </div>
+  <div class="row mt-2 ">
+        <img src="../../../assets/blackFriday.gif" style="width: 99.95%" class="img-fluid">
+  </div>
+  <div class="row mb-3">
+    <div class="col-lg-4 mt-4 ml-0 sanPham" *ngFor="let p of productList" >
+      <a class="text-decoration-none " [routerLink]="['/infoProduct',p.idProduct]">
+          <img [src]="'assets/img/' +p.avt" style="width: 200px;height: 180px">
+          <h3>{{p.productName}}</h3>
+          <div class="text-danger price">
+           <strong>{{numToString(p.price)}}<sup>đ</sup></strong>
+          </div>
+        <div class="ratingresult">
+          <ngb-rating [max]="5" [(rate)]="p.numOfStar" [readonly]="false"></ngb-rating>
+          <span>{{p.numOfReview}} đánh giá</span>
+        </div>
+        <label class="giareonline" *ngIf="p.promotion.idPromotion==1">Giá rẻ online</label>
+        <label class="moiramat" *ngIf="p.promotion.idPromotion==2">Mới ra mắt</label>
+        <label class="tragop" *ngIf="p.promotion.idPromotion==3">Trả góp 0%</label>
+      </a>
+      <button class="btn  border-0 tool" (click)="add(p.idProduct,p.productName,p.price,p.avt)" data-tooltip="Thêm vào giỏ">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination  justify-content-center">
+      <li class="page-item">
+        <a class="page-link" aria-label="Previous"  (click)="getPage(0)">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Đầu</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link"  aria-label="Previous" *ngIf="(indexPagination-1)>0" (click)="getPage((indexPagination-2))">
+          <span aria-hidden="true">&lsaquo;</span>
+          <span class="sr-only">Trước</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" *ngIf="(indexPagination-1)>0" (click)="getPage((indexPagination-2))">{{indexPagination - 1}}</a></li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link"(click)="getPage((indexPagination-1))">{{indexPagination}}</a>
+      </li>
+      <li class="page-item"><a class="page-link" *ngIf="(indexPagination +1)<= totalPagination" (click)="getPage((indexPagination))">{{indexPagination + 1}}</a></li>
+      <li class="page-item">
+        <a class="page-link"  aria-label="Next" *ngIf="(indexPagination +1)<= totalPagination" (click)="getPage((indexPagination))">
+          <span aria-hidden="true">&rsaquo;</span>
+          <span class="sr-only">Sau</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" aria-label="Next"  (click)="getPage((totalPagination-1))">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Cuối</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<app-footer></app-footer>

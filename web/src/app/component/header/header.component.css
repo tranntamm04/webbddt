@@ -1,0 +1,22 @@
+.social-top-nav {
+  float: left;
+  display: table;
+  margin-right: 30%;
+}
+.social-top-nav a {
+  display: table-cell;
+  padding: 5px;
+  text-align: center;
+  font-size: 17px;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  color: gray;
+  background-color: #f1f1f1;
+  transition-duration: .2s;
+}
+/* hightlight icon fb, google, youtube .... when hover */
+.social-top-nav a:hover { color: #fff; }
+.fa-facebook:hover { background: #3B5998; }
+.fa-twitter:hover { background: #55ACEE; }
+.fa-google:hover { background: #dd4b39; }

@@ -1,0 +1,119 @@
+html, body {
+  font-family: Verdana, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#footer {
+  background-color: #faf3f3;;
+  height: auto;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #CCCCCC;
+  border-top: 1px solid #DDDDDD;
+}
+
+#footer h4 {
+  border-bottom: 1px solid #BAC1C8;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.footer {
+  padding: 0 10px 10px 20px;
+}
+
+#footer ul {
+  list-style-type: none;
+  font-size: 13px;
+  margin-top: 15px;
+  padding-left: 0;
+  color: red;
+}
+
+.social li {
+  border-radius: 50%;
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  margin: 0 8px 0 0;
+  padding: 0;
+  text-align: center;
+  width: 36px;
+  transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.footer {
+  color: black;
+}
+#fb {
+  background-color: #4267b2;
+
+}
+
+.fa-facebook {
+
+  color: white;
+}
+
+#tt {
+  background-color: white;
+}
+
+.fa-twitter {
+
+  color: #1da1f2;
+}
+
+#gg {
+  background-color: #db4a3c;
+}
+
+.fa-google-plus {
+
+  color: white;
+}
+
+#pt {
+  background-color: #bf2025;
+}
+
+.fa-pinterest {
+
+  color: white;
+}
+
+#yt {
+  background-color: white;
+}
+
+.fa-youtube {
+
+  color: red;
+}
+
+.panel-footer>p{
+  font-size: 15px;
+  text-align: left;
+}
+#phone {
+  color: red;
+}

@@ -1,0 +1,99 @@
+<app-header></app-header>
+<div class="container-fluid register bgr">
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <img src="../../../assets/logo4 copy.png" alt=""/>
+      <h3>Xin Chào</h3>
+      <p>Laptop Nhóm 6 hân hạnh được phục vụ quý khách hàng^^!</p>
+      <input type="submit" name="" value="Đăng Nhập" routerLink="/login"/><br/>
+    </div> 
+    <div class="col-md-9 register-right">
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h3 class="register-heading">Tạo Tài Khoản Miễn Phí</h3>
+          <form class="row register-form" [formGroup]="createF" (ngSubmit)="create()">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Họ *" formControlName="surname" />
+                <div class="alert alert-danger mt-1 " *ngIf="createF.get('surname')?.invalid &&
+               createF.get('surname')?.touched &&
+             createF.get('surname')?.errors?.required">Họ không được để trống
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email *" formControlName="email"/>
+                <div class="alert alert-danger mt-1 " *ngIf="createF.get('email')?.invalid &&
+               createF.get('email')?.touched &&
+             createF.get('email')?.errors?.required">Email không được để trống
+              </div>
+                <div class="alert alert-danger mt-1 " *ngIf="createF.get('email')?.invalid &&
+               createF.get('email')?.touched &&
+             createF.get('email')?.errors?.email">Email không đúng định dạng
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Địa Chỉ *" formControlName="address"/>
+                <div class="alert alert-danger mt-1 " *ngIf="createF.get('address')?.invalid &&
+               createF.get('address')?.touched &&
+             createF.get('address')?.errors?.required">Địa chỉ không được để trống
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Tài khoản *" formControlName="userName" maxlength="9"/>
+                <div class="alert alert-danger mt-1 " *ngIf="createF.get('userName')?.invalid &&
+               createF.get('userName')?.touched &&
+             createF.get('userName')?.errors?.required">Tài khoản không được để trống
+                </div>
+                <div class="alert alert-danger" *ngIf="createF.controls.userName?.errors?.checkExistAccount">Tài khoản đã tồn tại.
+              </div>
+                <div class="alert alert-danger" *ngIf="createF.controls.userName?.errors?.maxLength">Tài khoản tối đa 8 kí tự.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Tên *" formControlName="name"/>
+                <div class="alert alert-danger mt-1 " *ngIf="createF.get('name')?.invalid &&
+               createF.get('name')?.touched &&
+             createF.get('name')?.errors?.required">Tên không được để trống
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" minlength="10" maxlength="10" name="txtEmpPhone"
+                       class="form-control" placeholder="Số điện thoại *" formControlName="phone"/>
+                <div class="alert alert-danger mt-1 " *ngIf="createF.get('phone')?.invalid &&
+               createF.get('phone')?.touched &&
+             createF.get('phone')?.errors?.required">Số điện thoại không được để trống
+                </div>
+              </div>
+              <div class="form-group">
+                <select formControlName="gender" class="form-control">
+                  <option value="0">Chọn giới tính</option>
+                  <option [ngValue]="1">Nam</option>
+                  <option [ngValue]="2">Nữ</option>
+                </select>
+                <div class="alert alert-danger mt-1 " *ngIf="createF.get('gender')?.invalid &&
+               createF.get('gender')?.touched &&
+             createF.get('gender')?.errors?.required">Giới tính không được để trống
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Mật khẩu *" formControlName="password"/>
+                <div class="alert alert-danger mt-1 " *ngIf="createF.get('password')?.invalid &&
+               createF.get('password')?.touched &&
+             createF.get('password')?.errors?.required">Mật khẩu không được để trống
+                </div>
+                <div class="alert alert-danger mt-1 " *ngIf="createF.get('password')?.errors?.pattern">
+                  Mật khẩu phải có ít nhất một ký tự số, một ký tự đặc biệt, một ký tự thường và có độ dài từ 6-12 ký tự
+                </div>
+              </div>
+              <button class="btnRegister" [disabled]="!createF.valid">Đăng ký</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<app-footer></app-footer>

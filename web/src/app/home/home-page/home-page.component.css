@@ -1,0 +1,570 @@
+.header .smallmenu {
+  display: none;
+} 
+
+/* Logo */
+.header .logo {
+  width: 250px;
+  height: 60px;
+  float: left;
+  transition-duration: .1s;
+}
+.header .logo:hover {
+  transform: scale(1.05)
+}
+.header .logo img {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  animation: example 5s infinite ease-in-out;
+}
+
+/* Standard syntax */
+@keyframes example {
+  35%, 100% {
+    transform: scale(1);
+  }
+  10% {
+    transform: rotateX(360deg) scale(1.15);
+  }
+}
+/* ======= End logo ======== */
+
+/* Content */
+.header .content{
+  /* tru width cua logo */
+  width: calc(100% - 250px);
+  float: left;
+}
+
+/* Search */
+.search-header {
+  float: left;
+}
+
+form.input-search {
+  margin-left: 20px;
+  background: #ddd;
+  border: 2px solid #bbb;
+  border-radius: 10px;
+  height: 35px;
+  width: 400px;
+ 
+}
+.input-search input {
+  float: left;
+  padding-left: 15px;
+  border: none;
+  border-radius: 10px 0 0 10px;
+  height: 100%;
+  width: calc(100% - 100px - 20px);
+  /* 100 la width button, 20 la padding button */
+}
+.input-search button {
+  float: right;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 10px;
+  color: #888;
+  background: none;
+  width: 100px;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  -webkit-transition-duration: .3s;
+  -o-transition-duration: .3s;
+  transition-duration: .3s;
+}
+.input-search button:hover {
+  color: #000;
+}
+
+.tags {
+  margin: 5px 0 0 20px;
+  font-size: 13px;
+}
+.tags a {
+  color: gray;
+  padding: 0 5px;
+}
+.tags a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+/* W3 school autocomplete */
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  height: 100%;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+/* End auto complete */
+/* ======= End search ========== */
+
+/* Tools Member */
+.tools-member {
+  float: right;
+  display: table;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.tools-member a {
+  position: relative;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #565;
+  cursor: pointer;
+}
+.tools-member a:hover > i {
+  border: 1px solid #fff;
+  background-color: rgb(161, 161, 161);
+  color: #fff;
+}
+
+.tools-member i { /* icon */
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+.tools-member .fa-user {
+  padding: 10px 12.5px;
+}
+.tools-member .fa-shopping-cart {
+  padding: 10px 11px;
+}
+/* Member */
+.member {
+  position: relative;
+  float: left;
+  display: table-cell;
+}
+.member:hover > .menuMember{
+  z-index: 20;
+  transform: translateX(-40%) scale(1);
+}
+.member .menuMember {
+  position: absolute;
+  left: 0;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #eee;
+  min-width: 170px;
+  transition-duration: .15s;
+  transform: translateX(-40%) scale(0);
+}
+.member .menuMember a {
+  display: block;
+  padding: 10px 0;
+}
+.member .menuMember a:hover {
+  background-color: #888;
+  color: #eee;
+}
+.member .hide {
+  display: none;
+}
+/* ======= End Member ======= */
+
+/* Cart */
+.cart {
+  float: left;
+  display: table-cell;
+  /* border-left: 1px solid #bbb; */
+  margin: 0 15px;
+  padding-left: 5px;
+}
+.cart-number {
+  position: absolute;
+  left: 1.4em;
+  bottom: -1em;
+  font-weight: bold;
+  font-size: 1em;
+  color: red;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+}
+.cart .cart-number {
+  transition-duration: .4s;
+}
+/* ======= End Cart ======== */
+
+/* Check Order - ÄÃ£ loáº¡i bá» */
+.check-order {
+  float: left;
+  display: table-cell;
+  border-left: 1px solid #bbb;
+  margin-left: 5px;
+  padding-left: 5px;
+}
+/* ======= End Check Order ======= */
+/* ======= End Tools Member ======= */
+/* ======= End Content ========= */
+/* ======= End header ======== */
+
+
+@media only screen and (max-width: 768px){
+  .header .smallmenu {
+    display: block;
+    float: left;
+    font-size: 25px;
+    font-weight: 700;
+    margin-left: 10px;
+  }
+  .header .logo{
+    float: none;
+    width: 40%;
+    height: 40px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .header .content{
+    float: none;
+    width: 100%;
+    margin-top: 5px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .05s ease-out;
+  }
+  .search-header
+  {
+    float: none;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  form.input-search
+  {
+    float: none;
+    width: 97%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .input-search input
+  {
+    padding-left: 5px;
+    width: calc(100% - 100px - 5px);
+  }
+  .tags
+  {
+    /* float: none; */
+    width: 100%;
+    margin: 5px 0 0 0;
+    text-align: center;
+  }
+  .tools-member
+  {
+    /* float: none; */
+    width: 100%;
+    margin: 10px auto;
+  }
+  .member, .cart
+  {
+    float: left;
+    width: 50%;
+    height: 35px;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+  }
+  .member:hover > .menuMember
+  {
+    transform: translateX(0%) scale(1);
+    width: 90%;
+  }
+}
+.header{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 12;
+  background-color: white;
+  padding: 15px 0 5px 0;
+  border-bottom: 3px solid #e1e1e1;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  animation: example 5s infinite ease-in-out;
+}
+
+/* Standard syntax */
+@keyframes example {
+  35%, 100% {
+    transform: scale(1);
+  }
+  10% {
+    transform: rotateX(360deg) scale(1.15);
+  }
+}
+.member{
+  margin-left: 10rem;
+}
+.cart{
+  margin-left: 2.9rem;
+}
+/*san pham*/
+.sanPham {
+  width: 238px;
+  border: 1px solid #eee;
+  -webkit-transition-duration: .3s;
+  -o-transition-duration: .3s;
+  transition-duration: .3s;
+}
+.sanPham a {
+  display: block;
+  position: relative;
+  padding: 10px 0;
+  height: 310px;
+}
+.sanPham a .price span {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  text-decoration: line-through;
+  margin-left: 5px;
+  color: #222;
+}
+/* Name and image */
+/* Hinh anh san pham */
+.sanPham a img {
+  display: block;
+  margin: 15px auto;
+  -webkit-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+/* Di chuyen anh? len tren */
+.sanPham a:hover > img {
+  margin: 5px auto 25px;
+}
+/* Ten san pham */
+.sanPham h3 {
+  display: block;
+  padding: 0 10px;
+  color: #333;
+  line-height: 1.3em;
+  font-size: 15px;
+  font-weight: normal;
+}
+/* Hightlight ten san pham khi hover */
+.sanPham a:hover h3 {
+  color: #288ad6;
+}
+/* ====== End Name and image ===== */
+
+/* Price */
+/* la div chua strong */
+.sanPham .price {
+  display: block;
+  padding: 5px 10px 0px 10px;
+}
+/* strong la gia tien in dam */
+.sanPham strong {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  font-size: 14px;
+  color: #e10c00;
+  line-height: 15px;
+}
+/* ===== End Price ===== */
+
+/* Rating */
+.sanPham .ratingresult {
+  padding: 5px 10px;
+}
+.sanPham .ratingresult span {
+  display: inline-block;
+  /*position: relative;*/
+  top: 1px;
+  margin-left: 5px;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 12px;
+  color: #777;
+}
+.fa-star, .fa-star-o {
+  color: orange;
+}
+/* ===== End Rating ===== */
+
+/* Khuyen mai */
+/* label la tag khuyen mai */
+.sanPham label {
+  z-index: 1;
+  display: inline-block;
+  position: absolute;
+  top: 180px;
+  left: 10px;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 2px;
+  padding: 3px 5px 0;
+  height: 18px;
+}
+/*buttonthem*/
+.sanPham button {
+  z-index: 1;
+  display: inline-block;
+  position: absolute;
+  top: 260px;
+  left: 300px;
+  font-size: 24px;
+  color: red;
+  font-weight: 600;
+  padding: 3px;
+  height: 30px;
+  border-radius: 30px;
+}
+button[data-tooltip]{
+  border-bottom: 1px dotted #333333;
+}
+button[data-tooltip]::before{
+   content: attr(data-tooltip);
+  position: absolute;
+  font-size: 10px;
+  text-align: center;
+  padding: 3px 5px;
+  width: 100px;
+  border-radius: 5px;
+  background: #e6e6e6;
+  left: -120%;
+  color: black;
+  bottom: 100%;
+  opacity: 0;
+  transition: 0.25s ease-in-out;
+ }
+button[data-tooltip]::after{
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid transparent;
+  opacity: 0;
+  transition: 0.25s ease-in-out;
+}
+button[data-tooltip]:hover::before,
+button[data-tooltip]:hover::after{
+  opacity: 1;
+}
+/* Giam gia thanh */
+.sanPham label.giamgia {
+  background-image: -webkit-gradient(linear, left top, right top, from(#ff9c00), to(#ec1f1f));
+  background-image: -webkit-linear-gradient(left, #ff9c00 0%, #ec1f1f 100%);
+  background-image: -o-linear-gradient(left, #ff9c00 0%, #ec1f1f 100%);
+  background-image: linear-gradient(90deg, #ff9c00 0%, #ec1f1f 100%);
+  border-radius: 10px;
+  padding: 1px 7px;
+  padding-left: 0;
+  padding-right: 10px;
+}
+/* Kí tự sấm sét */
+.fa-bolt {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  background: #f21;
+  color: white;
+}
+/* Tra gop 0% */
+.sanPham label.tragop {
+  background: #f28902;
+}
+/* Gia re online */
+.sanPham label.giareonline {
+  background: #3fb846;
+}
+/* Moi ra mat */
+.sanPham label.moiramat {
+  background: #2546ff;
+}
+/* ===== End Khuyen mai ====== */
+
+/* ===== Them Vao Gio Hang ==== */
+
+/* Dropdown Button */
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+
+ngb-rating {
+  color: #FFC107;
+}
+

@@ -1,0 +1,15 @@
+<table class="table table-striped scroll" >
+  <tr style="text-align:center;vertical-align:middle;font-size:20px;background-color:coral;color:black!important">
+    <th scope="col" style="font-weight:600">Sản phẩm</th>
+    <th scope="col" style="font-weight:600">Số lượng</th>
+    <th scope="col" style="font-weight:600">Đơn giá</th>
+  </tr>
+  <tr *ngFor="let l of list">
+    <td scope="col" style="text-align:center;vertical-align:middle;">
+      <img [src]="'assets/img/' +l.product.avt" style="width: 200px;height: 180px"/><br>
+      {{l.product.productName}}</td>
+    <td scope="col" style="text-align:center;vertical-align:middle;">{{l.quantity}}</td>
+    <td scope="col" style="text-align:center;vertical-align:middle;">{{numToString(l.price)}}<sup>đ</sup></td>
+  </tr>
+</table> 
+<button class="btn btn-secondary" type="submit" (click)="close()" style="margin-left: 380px">Đóng</button>
