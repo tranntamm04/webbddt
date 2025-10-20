@@ -1,24 +1,106 @@
-<nav *ngIf="!isAuthPage" class="navbar navbar-expand-lg navbar-light" style="background-color:#6b9cd4;">
-  <!-- Menu USER (không phải admin) -->
-  <div *ngIf="name !== 'ROLE_ADMIN'" class="collapse navbar-collapse" id="navbarTogglerUser" style="margin-left:30%">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item ml-lg-3">
-        <a class="nav-link" routerLink="/"><i class="fa fa-home"></i> Trang Chủ</a>
-      </li>
-    </ul>
-  </div>
+<!-- Main Navigation -->
+<nav *ngIf="!isAuthPage" class="navbar navbar-expand-lg navbar-modern">
+  <div class="container-fluid">
+    <!-- Logo/Brand -->
+    <a class="navbar-brand" routerLink="/">
+      <i class="fa fa-shopping-bag"></i>
+      <span></span>
+    </a>
 
-  <!-- Menu ADMIN -->
-  <div *ngIf="name === 'ROLE_ADMIN'" class="collapse navbar-collapse" id="navbarTogglerAdmin" style="margin-left:25%">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item ml-lg-3"><a class="nav-link" routerLink="/" (click)="on()"><i class="fa fa-home"></i> Trang Chủ</a></li>
-      <li class="nav-item ml-lg-3"><a class="nav-link" routerLink="/product-type"><i class="fa fa-tags"></i> Danh mục</a></li>
-      <li class="nav-item ml-lg-3"><a class="nav-link" routerLink="/listProduct"><i class="fa fa-th-large"></i> Sản Phẩm</a></li>
-      <li class="nav-item ml-lg-3"><a class="nav-link" routerLink="/listBill"><i class="fa fa-file-text-o"></i> Đơn Hàng</a></li>
-      <li class="nav-item ml-lg-3"><a class="nav-link" routerLink="/listCustomer"><i class="fa fa-male"></i> Khách Hàng</a></li>
-      <li class="nav-item ml-lg-3"><a class="nav-link" routerLink="/listEmployee"><i class="fa fa-users"></i> Nhân Viên</a></li>
-      <li class="nav-item ml-lg-3"><a class="nav-link" routerLink="/chart"><i class="fa fa-bar-chart-o"></i> Thống Kê</a></li>
-      <li class="nav-item" style="margin-left:230px"><a class="nav-link" (click)="logout()"><i class="fa fa-sign-out text-danger"></i> Đăng Xuất</a></li>
-    </ul>
+    <!-- Toggle button for mobile -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" [attr.data-target]="name === 'ROLE_ADMIN' ? '#navbarAdmin' : '#navbarUser'">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu USER -->
+    <div *ngIf="name !== 'ROLE_ADMIN'" class="collapse navbar-collapse" id="navbarUser">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i class="fa fa-home"></i> Trang Chủ
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products" routerLinkActive="active">
+            <i class="fa fa-th-large"></i> Sản Phẩm
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">
+            <i class="fa fa-info-circle"></i> Giới Thiệu
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active">
+            <i class="fa fa-envelope"></i> Liên Hệ
+          </a>
+        </li>
+      </ul>
+      
+      <!-- User actions -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="badge badge-danger">0</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-login" routerLink="/login">
+            <i class="fa fa-user"></i> Đăng Nhập
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Menu ADMIN -->
+    <div *ngIf="name === 'ROLE_ADMIN'" class="collapse navbar-collapse" id="navbarAdmin">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" (click)="on()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i class="fa fa-home"></i> Trang Chủ
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/product-type" routerLinkActive="active">
+            <i class="fa fa-tags"></i> Danh Mục
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/listProduct" routerLinkActive="active">
+            <i class="fa fa-th-large"></i> Sản Phẩm
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/listBill" routerLinkActive="active">
+            <i class="fa fa-file-text-o"></i> Đơn Hàng
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/listCustomer" routerLinkActive="active">
+            <i class="fa fa-male"></i> Khách Hàng
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/listEmployee" routerLinkActive="active">
+            <i class="fa fa-users"></i> Nhân Viên
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/chart" routerLinkActive="active">
+            <i class="fa fa-bar-chart-o"></i> Thống Kê
+          </a>
+        </li>
+      </ul>
+      
+      <!-- Admin actions -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link btn-logout" (click)="logout()">
+            <i class="fa fa-sign-out"></i> Đăng Xuất
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

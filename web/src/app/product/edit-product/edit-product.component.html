@@ -9,153 +9,108 @@
           <form class="row g-3 was-validated" [formGroup]="createProduct" (ngSubmit)="create()">
             <div class="row">
               <input type="hidden" formControlName="idProduct">
+              
+              <!-- Tên sản phẩm -->
               <div class="mb-3 col-md-12">
-                <label class="form-label" for="email">Tên Sản Phẩm: <span style="color: red">(*)</span></label>
-                <input type="text" class="form-control" formControlName="productName" id="email"
-                       placeholder="Nhập tên sản phẩm" required>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('productName')?.invalid &&
-               createProduct.get('productName')?.touched &&
-             createProduct.get('productName')?.errors?.required">Tên sản phẩm không được để trống
-                </div>
-              </div>
-              <div class="mb-3 col-md-6">
-                <label class="form-label" for="price">Giá: <span style="color: red">(*)</span></label>
-                <input type="text" class="form-control" formControlName="price" id="price"
-                       placeholder="Nhập giá" required>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('price')?.invalid &&
-               createProduct.get('price')?.touched &&
-             createProduct.get('price')?.errors?.required">Giá không được để trống
-                </div>
-              </div>
-              <div class="mb-3 col-md-6">
-                <label class="form-label" for="dateOfBirth">Số Lượng: <span style="color: red">(*)</span></label>
-                <input type="text" class="form-control" formControlName="quantity" id="dateOfBirth"
-                       placeholder="Nhập số lượng" required>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('quantity')?.invalid &&
-               createProduct.get('quantity')?.touched &&
-             createProduct.get('quantity')?.errors?.required">Số lượng không được để trống
-                </div>
-              </div>
-              <div class="mb-3 col-md-6">
-                <label class="form-label" for="mh">Màn Hình: <span style="color: red">(*)</span></label>
-                <input type="text" class="form-control" formControlName="screen" id="mh"
-                       placeholder="Nhập màn hình" required>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('screen')?.invalid &&
-               createProduct.get('screen')?.touched &&
-             createProduct.get('screen')?.errors?.required">Màn hình không được để trống
-                </div>
-              </div>
-              <div class="mb-3 col-md-6">
-                <label class="form-label" for="hdh">Hệ Điều Hành: <span style="color: red">(*)</span></label>
-                <input type="text" class="form-control" formControlName="hdh" id="hdh"
-                       placeholder="Nhập hệ điều hành" required>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('hdh')?.invalid &&
-               createProduct.get('hdh')?.touched &&
-             createProduct.get('hdh')?.errors?.required">Hệ điều hành không được để trống
+                <label class="form-label">Tên Sản Phẩm: <span style="color: red">(*)</span></label>
+                <input type="text" class="form-control" formControlName="productName" placeholder="Nhập tên sản phẩm">
+                <div class="alert alert-danger mt-1" *ngIf="createProduct.get('productName')?.invalid && createProduct.get('productName')?.touched">
+                  Tên sản phẩm không được để trống
                 </div>
               </div>
 
-              <div class="mb-3 col-lg-6">
-                <label class="form-label" for="cmrt">Camera : <span style="color: red">(*)</span></label>
-                <input type="text" class="form-control" formControlName="cameraT" id="cmrt"
-                       placeholder="Nhập camera " required>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('cameraT')?.invalid &&
-               createProduct.get('cameraT')?.touched &&
-             createProduct.get('cameraT')?.errors?.required">Camera không được để trống
+              <!-- Giá -->
+              <div class="mb-3 col-md-6">
+                <label class="form-label">Giá: <span style="color: red">(*)</span></label>
+                <input type="text" class="form-control" formControlName="price" placeholder="Nhập giá">
+                <div class="alert alert-danger mt-1" *ngIf="createProduct.get('price')?.invalid && createProduct.get('price')?.touched">
+                  Giá không được để trống
                 </div>
               </div>
-              <div class="mb-3 col-lg-6">
-                <label class="form-label" for="cpu">CPU: <span style="color: red">(*)</span></label>
-                <input type="text" class="form-control" formControlName="cpu" id="cpu"
-                       placeholder="Nhập CPU" required>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('cpu')?.invalid &&
-               createProduct.get('cpu')?.touched &&
-             createProduct.get('cpu')?.errors?.required">Cpu không được để trống
+
+              <!-- Số lượng -->
+              <div class="mb-3 col-md-6">
+                <label class="form-label">Số Lượng: <span style="color: red">(*)</span></label>
+                <input type="text" class="form-control" formControlName="quantity" placeholder="Nhập số lượng">
+                <div class="alert alert-danger mt-1" *ngIf="createProduct.get('quantity')?.invalid && createProduct.get('quantity')?.touched">
+                  Số lượng không được để trống
                 </div>
               </div>
-              <div class="mb-3 col-lg-6">
-                <label class="form-label" for="ram">RAM: <span style="color: red">(*)</span></label>
-                <input type="text" class="form-control" formControlName="ram" id="ram"
-                       placeholder="Nhập ram" required>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('ram')?.invalid &&
-               createProduct.get('ram')?.touched &&
-             createProduct.get('ram')?.errors?.required">Ram không được để trống
-                </div>
+
+              <!-- Các trường KHÔNG bắt buộc -->
+              <div class="mb-3 col-md-6">
+                <label class="form-label">Màn Hình:</label>
+                <input type="text" class="form-control" formControlName="screen" placeholder="Nhập màn hình">
               </div>
-              <div class="mb-3 col-lg-6">
-                <label class="form-label" for="rom">SSD: <span style="color: red">(*)</span></label>
-                <input type="text" class="form-control" formControlName="rom" id="rom"
-                       placeholder="Nhập rom" required>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('rom')?.invalid &&
-               createProduct.get('rom')?.touched &&
-             createProduct.get('rom')?.errors?.required">SSD không được để trống
-                </div>
+
+              <div class="mb-3 col-md-6">
+                <label class="form-label">Hệ Điều Hành:</label>
+                <input type="text" class="form-control" formControlName="hdh" placeholder="Nhập hệ điều hành">
               </div>
-              <div class="mb-3 col-lg-6">
-                <label class="form-label" for="sdcard">SD Card: <span style="color: red">(*)</span></label>
-                <input type="text" class="form-control" formControlName="sdCard" id="sdcard"
-                       placeholder="Nhập SD Card" required>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('idPromotion')?.invalid &&
-               createProduct.get('idPromotion')?.touched &&
-             createProduct.get('idPromotion')?.errors?.required">Khuyến mãi được để trống
-                </div>
+
+              <div class="mb-3 col-md-6">
+                <label class="form-label">Camera:</label>
+                <input type="text" class="form-control" formControlName="cameraT" placeholder="Nhập camera">
               </div>
-              <div class="mb-3 col-lg-6">
-                <label class="form-label" for="pin">Pin: <span style="color: red">(*)</span></label>
-                <input type="text" class="form-control" formControlName="pin" id="pin"
-                       placeholder="Nhập pin" required>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('pin')?.invalid &&
-               createProduct.get('pin')?.touched &&
-             createProduct.get('pin')?.errors?.required">Pin không được để trống
-                </div>
+
+              <div class="mb-3 col-md-6">
+                <label class="form-label">CPU:</label>
+                <input type="text" class="form-control" formControlName="cpu" placeholder="Nhập CPU">
               </div>
+
+              <div class="mb-3 col-md-6">
+                <label class="form-label">RAM:</label>
+                <input type="text" class="form-control" formControlName="ram" placeholder="Nhập RAM">
+              </div>
+
+              <div class="mb-3 col-md-6">
+                <label class="form-label">SSD:</label>
+                <input type="text" class="form-control" formControlName="rom" placeholder="Nhập SSD">
+              </div>
+
+              <div class="mb-3 col-md-6">
+                <label class="form-label">SD Card:</label>
+                <input type="text" class="form-control" formControlName="sdCard" placeholder="Nhập SD Card">
+              </div>
+
+              <div class="mb-3 col-md-6">
+                <label class="form-label">Pin:</label>
+                <input type="text" class="form-control" formControlName="pin" placeholder="Nhập Pin">
+              </div>
+
+              <!-- Khuyến mãi -->
               <div class="col-md-6 mb-3">
-                <label class="form-label " for="promotion">Khuyến Mãi: <span style="color: red">(*)</span></label>
-                <div class="input-group">
-                  <select class="form-control" formControlName="idPromotion" id="promotion">
-                    <option value="">Chọn khuyến mãi</option>
-                    <option *ngFor="let p of promotion"
-                            [ngValue]="p.idPromotion">{{p.namePromotion}}</option>
-                  </select>
-                </div>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('idPromotion')?.invalid &&
-               createProduct.get('idPromotion')?.touched &&
-             createProduct.get('idPromotion')?.errors?.required">Khuyến mãi không được để trống
+                <label class="form-label">Khuyến Mãi: <span style="color: red">(*)</span></label>
+                <select class="form-control" formControlName="idPromotion">
+                  <option value="">Chọn khuyến mãi</option>
+                  <option *ngFor="let p of promotion" [ngValue]="p.idPromotion">{{ p.namePromotion }}</option>
+                </select>
+                <div class="alert alert-danger mt-1" *ngIf="createProduct.get('idPromotion')?.invalid && createProduct.get('idPromotion')?.touched">
+                  Khuyến mãi không được để trống
                 </div>
               </div>
+
+              <!-- Hãng sản phẩm -->
               <div class="col-md-6 mb-3">
-                <label class="form-label " for="productType">Hãng: <span style="color: red">(*)</span></label>
-                <div class="input-group">
-                  <select class="form-control" formControlName="idType" id="productType">
-                    <option value="">Chọn hãng</option>
-                    <option *ngFor="let pr of productType"
-                            [ngValue]="pr.idType">{{pr.nameType}}</option>
-                  </select>
-                </div>
-                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('idType')?.invalid &&
-               createProduct.get('idType')?.touched &&
-             createProduct.get('idType')?.errors?.required">Hãng không được để trống
+                <label class="form-label">Hãng: <span style="color: red">(*)</span></label>
+                <select class="form-control" formControlName="idType">
+                  <option value="">Chọn hãng</option>
+                  <option *ngFor="let pr of productType" [ngValue]="pr.idType">{{ pr.nameType }}</option>
+                </select>
+                <div class="alert alert-danger mt-1" *ngIf="createProduct.get('idType')?.invalid && createProduct.get('idType')?.touched">
+                  Hãng không được để trống
                 </div>
               </div>
-<!--              <div class="mb-3 col-lg-12">-->
-<!--                <label class="form-label" for="avt">Ảnh: <span style="color: red">(*)</span></label>-->
-<!--                <input type="file" class="form-control" formControlName="avt" id="avt" required>-->
-<!--                <div class="alert alert-danger mt-1 " *ngIf="createProduct.get('avt')?.invalid &&-->
-<!--               createProduct.get('avt')?.touched &&-->
-<!--             createProduct.get('avt')?.errors?.required">Ảnh không được để trống-->
-<!--                </div>-->
-<!--              </div>-->
+
+              <!-- Buttons -->
               <div class="col-md-3 mb-3"></div>
               <div class="col-md-3 mb-3">
-                <button type="reset" class="btn btn-danger" mat-button mat-dialog-close routerLink="/listProduct">Hủy</button>
+                <button type="reset" class="btn btn-danger" routerLink="/listProduct">Hủy</button>
               </div>
               <div class="col-md-3 mb-3">
-                <button type="submit" class="btn btn-success"  cdkFocusInitial [disabled]="!createProduct.valid">Lưu Thay Đổi
-                </button>
+                <button type="submit" class="btn btn-success" [disabled]="!createProduct.valid">Lưu Thay Đổi</button>
               </div>
               <div class="col-md-3 mb-3"></div>
-            </div>
-            <div class="row">
             </div>
           </form>
         </div>

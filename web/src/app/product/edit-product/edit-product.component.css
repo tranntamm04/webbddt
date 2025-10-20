@@ -1,1 +1,6 @@
- 
+input.form-control:valid,
+select.form-control:valid,
+textarea.form-control:valid {
+  background-image: none !important;
+  box-shadow: none !important;
+}

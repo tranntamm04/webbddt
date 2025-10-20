@@ -27,6 +27,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     public ProductType save(ProductType productType) {
         return productTypeRepository.save(productType);
     }
+
     @Override
     public void deleteById(int idType) {
         this.productTypeRepository.deleteById(idType);

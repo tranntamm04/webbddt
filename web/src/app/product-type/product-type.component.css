@@ -1,80 +1,191 @@
+/* Tổng thể */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+}
+
+/* Container chính */
 .container {
+  max-width: 1200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Card */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
   padding: 20px;
-  background: #fff;
-  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Tiêu đề */
+h2, h4 {
+  color: #2c3e50;
+  font-weight: 600;
 }
 
 h2 {
-  color: #333;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.msg {
-  text-align: center;
-  color: green;
+/* Form */
+.form-label {
   font-weight: 500;
+  color: #34495e;
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-
-.table th,
-.table td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: center;
-}
-
-.btn-add {
-  background: #4caf50;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-edit {
-  background: #2196f3;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  margin-right: 5px;
-  border-radius: 4px;
-}
-
-.btn-delete {
-  background: #f44336;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-}
-
-.form-container {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #ddd;
+.form-control, .form-control:focus {
   border-radius: 8px;
-  background: #f9f9f9;
+  border: 1px solid #dcdcdc;
+  padding: 10px;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.form-container input,
-.form-container textarea {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
 
-.actions button {
-  margin-right: 10px;
-  padding: 6px 12px;
+/* Thông báo lỗi */
+.text-danger {
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Nút */
+.btn {
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #3498db;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #7f8c8d;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #6c757d;
+  transform: translateY(-2px);
+}
+
+.btn-warning, .btn-danger {
+  padding: 6px 12px;
+}
+
+.btn-warning {
+  background-color: #f1c40f;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #d4ac0d;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+/* Bảng */
+.table {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.table thead {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+  padding: 12px;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Hình ảnh trong bảng */
+td img {
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+td img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    padding: 15px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+  }
+
+  .table th, .table td {
+    padding: 8px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tùy chỉnh textarea */
+textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Hiệu ứng mượt mà khi chuyển đổi trạng thái form */
+form {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

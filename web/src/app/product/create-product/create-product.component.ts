@@ -31,20 +31,21 @@ export class CreateProductComponent implements OnInit {
   ngOnInit(): void {
     // form không dùng generic
     this.createProduct = new FormGroup({
-      productName: new FormControl('', [Validators.required]),
-      price: new FormControl(null, [Validators.required, Validators.pattern(/^\d+$/)]),
-      quantity: new FormControl(null, [Validators.required, Validators.pattern(/^\d+$/)]),
-      avt: new FormControl('', [Validators.required]),
-      screen: new FormControl('', [Validators.required]),
-      hdh: new FormControl('', [Validators.required]),
-      cameraT: new FormControl('', [Validators.required]),
-      cpu: new FormControl('', [Validators.required]),
-      ram: new FormControl('', [Validators.required]),
-      rom: new FormControl('', [Validators.required]),
-      sdCard: new FormControl('', [Validators.required]),
-      pin: new FormControl('', [Validators.required]),
-      idType: new FormControl(null, [Validators.required]),
-      idPromotion: new FormControl(null, [Validators.required]),
+       idProduct: new FormControl(''),
+    productName: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required]),
+    quantity: new FormControl('', [Validators.required]),
+    screen: new FormControl(''),
+    hdh: new FormControl(''),
+    cameraT: new FormControl(''),
+    cpu: new FormControl(''),
+    ram: new FormControl(''),
+    rom: new FormControl(''),
+    sdCard: new FormControl(''),
+    pin: new FormControl(''),
+    idPromotion: new FormControl('', [Validators.required]),
+    idType: new FormControl('', [Validators.required]),
+    avt: new FormControl('', [Validators.required])
     });
 
     // nạp danh mục + khuyến mãi

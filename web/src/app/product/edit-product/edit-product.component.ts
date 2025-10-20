@@ -26,21 +26,21 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.createProduct = new FormGroup({
-      idProduct: new FormControl('',[Validators.required]),
-      productName: new FormControl('',[Validators.required]),
-      price: new FormControl('',[Validators.required]),
-      quantity: new FormControl('',[Validators.required]),
-      screen: new FormControl('',[Validators.required]),
-      hdh: new FormControl('',[Validators.required]),
-      cameraT: new FormControl('',[Validators.required]),
-      cpu: new FormControl('',[Validators.required]),
-      ram: new FormControl('',[Validators.required]),
-      rom: new FormControl('',[Validators.required]),
-      sdCard: new FormControl('',[Validators.required]),
-      pin: new FormControl('',[Validators.required]),
-      idPromotion: new FormControl('',[Validators.required]),
-      idType: new FormControl('',[Validators.required]),
-      avt: new FormControl('',[Validators.required]),
+      idProduct: new FormControl(''),
+      productName: new FormControl('', [Validators.required]),
+      price: new FormControl('', [Validators.required]),
+      quantity: new FormControl('', [Validators.required]),
+      screen: new FormControl(''),
+      hdh: new FormControl(''),
+      cameraT: new FormControl(''),
+      cpu: new FormControl(''),
+      ram: new FormControl(''),
+      rom: new FormControl(''),
+      sdCard: new FormControl(''),
+      pin: new FormControl(''),
+      idPromotion: new FormControl('', [Validators.required]),
+      idType: new FormControl('', [Validators.required]),
+      avt: new FormControl('')
     });
     this.productTypeService.findAllProductType().subscribe((data) => {
       this.productType = data;
