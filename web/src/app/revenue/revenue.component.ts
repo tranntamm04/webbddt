@@ -4,8 +4,8 @@ import type { ChartConfiguration } from 'chart.js';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { RevenueService } from '../services/revenue.service';
-import { ProductTypeService, ProductType } from '../services/product-type.service';
-
+import { ProductTypeService } from '../services/product-type.service';
+import { IProductType } from '../interface/IProductType';
 @Component({
   selector: 'app-revenue',
   template: `
@@ -42,7 +42,7 @@ export class RevenueComponent implements OnInit, AfterViewInit, OnDestroy {
   typeId: number | null = null;
 
   total = 0;
-  categories: ProductType[] = [];
+  categories: IProductType[] = [];
   noData = false;
 
   constructor(private revenue: RevenueService, private types: ProductTypeService) {}

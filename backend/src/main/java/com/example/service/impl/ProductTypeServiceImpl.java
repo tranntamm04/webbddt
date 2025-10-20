@@ -22,4 +22,14 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     public ProductType findById(int idType) {
         return this.productTypeRepository.findById(idType).orElse(null);
     }
+
+    @Override
+    public ProductType save(ProductType productType) {
+        return productTypeRepository.save(productType);
+    }
+    @Override
+    public void deleteById(int idType) {
+        this.productTypeRepository.deleteById(idType);
+    }
+
 }

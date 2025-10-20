@@ -55,6 +55,8 @@ import {StarRatingModule} from "angular-star-rating";
 import {RatingModule} from "ng-starrating";
 import { ChangePasswordComponent } from './security/change-password/change-password.component';
 import { RevenueComponent } from './revenue/revenue.component';
+import { ProductTypeModule } from './product-type/product-type.module';
+import { ProductTypeComponent } from './product-type/product-type.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +91,8 @@ import { RevenueComponent } from './revenue/revenue.component';
     DeleteBillComponent,
     ChartComponent,
     ChangePasswordComponent,
-    RevenueComponent
+    RevenueComponent,
+    ProductTypeComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +118,8 @@ import { RevenueComponent } from './revenue/revenue.component';
     MatIconModule,
     StarRatingModule.forRoot(),
     RatingModule,
-    FormsModule
+    FormsModule,
+    ProductTypeModule
   ],
   providers: [],
   exports: [

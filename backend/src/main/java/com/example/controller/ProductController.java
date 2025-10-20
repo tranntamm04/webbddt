@@ -12,6 +12,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import com.example.dto.EvaluateDTO;
 import com.example.dto.ProductDTO;
+import com.example.dto.ProductTypeDTO;
 import com.example.entity.*;
 import com.example.service.*;
 
@@ -49,15 +50,6 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(promotions, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/listProductType", method = RequestMethod.GET)
-    public ResponseEntity<List<ProductType>> getAllProductType() {
-        List<ProductType> productTypes = productTypeService.findAll();
-        if (productTypes.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(productTypes, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/listProduct", method = RequestMethod.GET)
