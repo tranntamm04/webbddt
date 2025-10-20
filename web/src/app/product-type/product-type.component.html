@@ -1,0 +1,75 @@
+<app-header></app-header>
+<div class="container mt-3">
+
+  <h2>Quản lý danh mục sản phẩm</h2>
+
+  <!-- Form tạo mới / sửa -->
+  <div class="card mb-3 p-3">
+    <h4>{{ isEditMode ? 'Cập nhật danh mục' : 'Thêm danh mục mới' }}</h4>
+    <form [formGroup]="form" (ngSubmit)="save()">
+
+      <!-- ID chỉ hiện khi thêm mới -->
+      <div class="mb-2" *ngIf="!isEditMode">
+        <label for="idType" class="form-label">ID</label>
+        <input id="idType" type="number" class="form-control" formControlName="idType" />
+        <div *ngIf="form.controls['idType'].invalid && form.controls['idType'].touched" class="text-danger">
+          ID là bắt buộc và phải >=1
+        </div>
+      </div>
+
+      <div class="mb-2">
+        <label for="nameType" class="form-label">Tên danh mục</label>
+        <input id="nameType" class="form-control" formControlName="nameType" />
+        <div *ngIf="form.controls['nameType'].invalid && form.controls['nameType'].touched" class="text-danger">
+          Tên danh mục là bắt buộc
+        </div>
+      </div>
+
+      <div class="mb-2">
+        <label for="description" class="form-label">Mô tả</label>
+        <textarea id="description" class="form-control" formControlName="description"></textarea>
+      </div>
+
+      <div class="mb-2">
+        <label for="avt" class="form-label">Ảnh (URL)</label>
+        <input id="avt" class="form-control" formControlName="avt" />
+      </div>
+
+      <button type="submit" class="btn btn-primary me-2">{{ isEditMode ? 'Cập nhật' : 'Thêm mới' }}</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Hủy</button>
+    </form>
+  </div>
+
+  <!-- Danh sách danh mục -->
+  <div class="card p-3">
+    <h4>Danh sách danh mục</h4>
+    <table class="table table-bordered table-hover">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>Tên danh mục</th>
+          <th>Mô tả</th>
+          <th>Ảnh</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pt of productTypes">
+          <td>{{ pt.idType }}</td>
+          <td>{{ pt.nameType }}</td>
+          <td>{{ pt.description }}</td>
+          <td>
+            <img *ngIf="pt.avt" [src]="pt.avt" alt="Avt" width="50" />
+          </td>
+          <td>
+            <button class="btn btn-sm btn-warning me-2" (click)="selectProductType(pt)">Sửa</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteProductType(pt.idType)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<app-footer></app-footer>

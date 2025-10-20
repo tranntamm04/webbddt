@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/employee/**", "/bill/listBill", "/customer/listCustomer", "/employee/listEmployee",
-                        "/product/listProduct", "/product/**", "/customer/**", "/bill/**")
+                        "/product/listProduct", "/product/**", "/customer/**", "/bill/**", "/productType/**")
                 .hasAnyRole("ADMIN")
                 .anyRequest().authenticated().and().exceptionHandling()
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
